@@ -2,11 +2,11 @@
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
-**SwiftyOpenPay** is an ***unoficial*** OpenPay API client for iOS written in Swift. 
+**SwiftyOpenPay** is an ***unofficial*** OpenPay API client for iOS written in Swift.
 
 Use at your own risk.
 
-## Instalation
+## Installation
 
 `SwiftyOpenPay` can be installed using [Carthage](https://github.com/Carthage/Carthage).
 
@@ -15,6 +15,14 @@ In your Cartfile, include `SwiftyOpenPay`:
 ```
 github "Pacific3/SwiftyOpenPay" ~> 0.1
 ```
+
+Then, update:
+
+```bash
+$ carthage update
+```
+
+Drag all the `.framework` files at `Carthage/Build/iOS` to your target's `Linked Frameworks and Libraries` section.
 
 ## Usage
 
