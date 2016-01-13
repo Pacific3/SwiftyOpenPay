@@ -28,13 +28,13 @@ public struct Address: JSONParselable {
     }
     
     public init(
-        city: String,
-        countryCode: String,
-        postalCode: String,
         line1: String,
         line2: String? = nil,
         line3: String? = nil,
-        state: String
+        city: String,
+        state: String,
+        countryCode: String,
+        postalCode: String
         )
     {
         self.city = city
@@ -61,13 +61,13 @@ public struct Address: JSONParselable {
         let line3 = string(data, key: "line3")
         
         return Address(
-            city: city,
-            countryCode: countryCode,
-            postalCode: postalCode,
             line1: line1,
             line2: line2,
             line3: line3,
-            state: state
+            city: city,
+            state: state,
+            countryCode: countryCode,
+            postalCode: postalCode
         )
     }
 }

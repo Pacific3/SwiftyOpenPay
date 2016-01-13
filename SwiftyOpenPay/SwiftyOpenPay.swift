@@ -12,9 +12,6 @@ private let api_url           = "https://api.openpay.mx/"
 private let sandbox_api_url   = "https://sandbox-api.openpay.mx/"
 private let api_version       = "v1"
 
-public typealias Completion = JSONParselable -> Void
-public typealias Error = NSError -> Void
-
 extension SwiftyOpenPay.SwiftyOpenPayError: CustomStringConvertible {
     
     public var description: String {
@@ -53,35 +50,37 @@ public struct SwiftyOpenPay {
         return base + api_version + "/" + merchantId + "/"
     }
     
-    public init(merchantId: String, apiKey: String, productionMode: Bool) {
+    public init(merchantId: String, apiKey: String, productionMode: Bool = false) {
         self.merchantId     = merchantId
         self.apiKey         = apiKey
         self.productionMode = productionMode
     }
     
-    public func createTokenWithCard(card: Card, completion: Completion, error: Error) throws {
+    public func createTokenWithCard(card: Card, completion: Token -> Void, error: NSError -> Void) throws {
         try card.isValid()
         
         guard let url = NSURL(string: URLBase + "tokens") else {
             return
         }
         
-        let request = getRequestForURL(url, method: .POST, payload: card.backingData())
+        let request = requestForURL(url, method: .POST, payload: card.backingData())
         
         sendRequest(request, type: Token.self, completionClosure: completion, errorClosure: error)
     }
     
-    public func getTokenWithId(id: String, completion: Completion, error: Error) {
+    public func getTokenWithId(id: String, completion: Token -> Void, error: NSError -> Void) {
         guard let url = NSURL(string: URLBase + "tokens/" + id) else {
             return
         }
         
-        let request = getRequestForURL(url, method: .GET)
+        let request = requestForURL(url, method: .GET)
         
         sendRequest(request, type: Token.self, completionClosure: completion, errorClosure: error)
     }
-    
-    private func getRequestForURL(url: NSURL, method: HTTPMethod, payload: [String:AnyObject]? = nil) -> NSURLRequest {
+}
+
+extension SwiftyOpenPay {
+    private func requestForURL(url: NSURL, method: HTTPMethod, payload: [String:AnyObject]? = nil) -> NSURLRequest {
         let request = NSMutableURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
         
         request.setValue("application/json;revision=1.1", forKey: "Accept")
@@ -105,7 +104,7 @@ public struct SwiftyOpenPay {
         return request
     }
     
-    private func sendRequest<T: JSONParselable>(request: NSURLRequest, type: T.Type, completionClosure: Completion? = nil, errorClosure: Error? = nil) {
+    private func sendRequest<T: JSONParselable>(request: NSURLRequest, type: T.Type, completionClosure: (T -> Void)? = nil, errorClosure: (NSError -> Void)? = nil) {
         let session = NSURLSession(configuration: NSURLSessionConfiguration.ephemeralSessionConfiguration())
         let task = session.dataTaskWithRequest(request) { data, reponse, error in
             guard
@@ -141,4 +140,3 @@ public struct SwiftyOpenPay {
         SwiftyOpenPay.internalQueue.addOperation(taskOp)
     }
 }
-
