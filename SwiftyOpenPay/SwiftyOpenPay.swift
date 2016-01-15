@@ -51,7 +51,7 @@ public struct SwiftyOpenPay {
         return base + api_version + "/" + merchantId + "/"
     }
     
-    public init(merchantId: String, apiKey: String, productionMode: Bool = false, verboseMode: Bool = false) {
+    public init(merchantId: String, apiKey: String, productionMode: Bool = true, verboseMode: Bool = false) {
         self.merchantId     = merchantId
         self.apiKey         = apiKey
         self.productionMode = productionMode
@@ -100,10 +100,11 @@ extension SwiftyOpenPay {
             do {
                 let data = try NSJSONSerialization.dataWithJSONObject(payload, options: .PrettyPrinted)
                 request.HTTPBody = data
+                if verboseMode { print("Payload:\n\(payload)") }
             } catch {}
         }
         
-        if verboseMode { debugPrint("Request to send:\n\(request)") }
+        if verboseMode { print("Request to send:\n\(request)") }
         
         return request
     }

@@ -104,7 +104,7 @@ class CardTests: XCTestCase {
             assert(myCard.cardType == .Amex)
         }
     }
-
+    
     func testValidVisaCard() {
         for number in visaNumbers! {
             let myCard = Card(
