@@ -1,6 +1,6 @@
 # SwiftyOpenPay
 
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![SwiftyOpenPay v0.2](https://img.shields.io/badge/Latest Version-v0.2-brightgreen.svg)](https://github.com/Pacific3/SwiftyOpenPay/releases/tag/v0.2)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![SwiftyOpenPay v0.2.1](https://img.shields.io/badge/Latest Version-v0.2.1-brightgreen.svg)](https://github.com/Pacific3/SwiftyOpenPay/releases/tag/v0.2.1)
 
 **SwiftyOpenPay** is an ***unofficial*** OpenPay API client for iOS written in Swift.
 
@@ -45,14 +45,21 @@ let myCard = Card(
     number: "XXXXXXXXXXXX"
 )
 
-let openPay = SwiftyOpenPay(merchantId: "MyMerchantId", apiKey: "MyAPIKey")
+let configuration = SwiftyOpenPay.Configuration(
+  merchantId: "MyMerchantId",
+  apiKey: "MyAPIKey",
+  sandboxMode: true,
+  verboseMode: true
+)
+
+let openPay = SwiftyOpenPay(configuration: configuration)
 
 do {
     try openPay.createTokenWithCard(myCard,
-        completion: {token in
+        completion: { token in
             print(token.id)
         },
-        error: {error in
+        error: { error in
             print(error)
         }
     )
@@ -60,6 +67,10 @@ do {
     print(error)
 }
 ```
+
+You can either crate a `SwiftyOpenPay` instance using a `SwiftyOpenPay.Configuration`, or passing the values directly to the initializer.
+
+`sandboxMode` and `verboseMode` default to `false`. Both of them can be omitted from the constructors.
 
 # Disclaimer
 SwiftyOpenPay is not an oficial [Openpay](http://www.openpay.mx) product. Openpay is not responsible for either this code or what you use it for.
