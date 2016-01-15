@@ -23,10 +23,12 @@ internal struct CardValidator {
     }
     
     static func validateCard(card: Card) throws {
-        if let _ = card.number.rangeOfString(card.cardType.regex, options: .RegularExpressionSearch) {
-            return
+        guard card.securityCodeCheckStatus == .Passed && card.expired == false else {
+            throw CardValidationError.InvalidCard
         }
         
-        throw CardValidationError.InvalidCard
+        guard let _ = card.number.rangeOfString(card.cardType.regex, options: .RegularExpressionSearch) else {
+            throw CardValidationError.InvalidCard
+        }
     }
 }
