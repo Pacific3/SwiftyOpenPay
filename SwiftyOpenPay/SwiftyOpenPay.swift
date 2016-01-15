@@ -43,6 +43,7 @@ public struct SwiftyOpenPay {
     public let merchantId: String
     public let apiKey: String
     public let productionMode: Bool
+    public let verboseMode: Bool
     
     private var URLBase: String {
         let base = productionMode ? api_url : sandbox_api_url
@@ -50,16 +51,17 @@ public struct SwiftyOpenPay {
         return base + api_version + "/" + merchantId + "/"
     }
     
-    public init(merchantId: String, apiKey: String, productionMode: Bool = false) {
+    public init(merchantId: String, apiKey: String, productionMode: Bool = false, verboseMode: Bool = false) {
         self.merchantId     = merchantId
         self.apiKey         = apiKey
         self.productionMode = productionMode
+        self.verboseMode    = verboseMode
     }
     
     public func createTokenWithCard(card: Card, completion: Token -> Void, error: NSError -> Void) throws {
         try card.isValid()
         
-        guard let url = NSURL(string: URLBase + "tokens") else {
+        guard let url = NSURL(string: URLBase + "tokens/") else {
             return
         }
         
@@ -101,28 +103,31 @@ extension SwiftyOpenPay {
             } catch {}
         }
         
+        if verboseMode { debugPrint("Request to send:\n\(request)") }
+        
         return request
     }
     
     private func sendRequest<T: JSONParselable>(request: NSURLRequest, type: T.Type, completionClosure: (T -> Void)? = nil, errorClosure: (NSError -> Void)? = nil) {
         let session = NSURLSession(configuration: NSURLSessionConfiguration.ephemeralSessionConfiguration())
         let task = session.dataTaskWithRequest(request) { data, reponse, error in
-            guard
-                let data = data where error === nil
-                else {
-                    if let error = error {
-                        errorClosure?(error)
-                    }
-                    return
+            guard let data = data where error === nil else {
+                if let error = error {
+                    if self.verboseMode { print("Got error from server:\n\(error)") }
+                    errorClosure?(error)
+                }
+                return
             }
             
             var json = [String:AnyObject]?()
             
             do {
-                json = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as? [String:AnyObject]
+                json = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves) as? [String:AnyObject]
             } catch let jsonError as NSError {
                 errorClosure?(jsonError)
             }
+            
+            if self.verboseMode { print("Parsed server response:\n\(json)") }
             
             guard
                 let _json = json,
