@@ -36,8 +36,6 @@ class SwiftyOpenPaytests: XCTestCase {
             assertionFailure("Could not build token")
             return
         }
-        
-        print(token.id)
     }
     
     func buildToken<T: JSONParselable>(type: T.Type, data: [String:AnyObject]) -> T? {
