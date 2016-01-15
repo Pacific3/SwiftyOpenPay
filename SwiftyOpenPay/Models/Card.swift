@@ -32,6 +32,20 @@ public struct Card: JSONParselable {
     public let allowsCharges: Bool?
     public let allowsPayouts: Bool?
     
+    public init() {
+        holderName = ""
+        expirationMonth = ""
+        expirationYear = ""
+        address = Address()
+        number = ""
+        id = nil
+        bankName = nil
+        brand = nil
+        cvv2 = nil
+        allowsCharges = nil
+        allowsPayouts = nil
+    }
+    
     public init(
         holderName: String,
         expirationMonth: String,
@@ -142,13 +156,13 @@ public struct Card: JSONParselable {
         let currentDateComponents = NSCalendar.currentCalendar().components([.Month, .Year], fromDate: NSDate())
         
         guard
-            (expirationYear + 2000) <= currentDateComponents.year &&
-                expirationMonth <= currentDateComponents.month
+            (expirationYear + 2000) >= currentDateComponents.year &&
+                expirationMonth >= currentDateComponents.month
             else {
-                return false
+                return true
         }
         
-        return true
+        return false
     }
     
     public var securityCodeCheckStatus: SecurityCodeCheckStatus {

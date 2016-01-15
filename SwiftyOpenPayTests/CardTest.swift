@@ -63,7 +63,7 @@ class CardTests: XCTestCase {
         ]
     }
     
-    func testVisa() {
+    func testVisaNumbers() {
         for number in visaNumbers! {
             let myCard = Card(
                 holderName: "John Doe",
@@ -77,10 +77,8 @@ class CardTests: XCTestCase {
         }
     }
     
-    func testValidCardNumbers() {
-        let numbers = visaNumbers! + masterCardNumbers! + amexNumbers!
-        
-        for number in numbers {
+    func testMasterCardNumbers() {
+        for number in masterCardNumbers! {
             let myCard = Card(
                 holderName: "John Doe",
                 expirationMonth: "04",
@@ -89,18 +87,78 @@ class CardTests: XCTestCase {
                 number: number
             )
             
+            assert(myCard.cardType == .MasterCard)
+        }
+    }
+    
+    func testAmexNumbers() {
+        for number in amexNumbers! {
+            let myCard = Card(
+                holderName: "John Doe",
+                expirationMonth: "04",
+                expirationYear: "19",
+                address: address!,
+                number: number
+            )
+            
+            assert(myCard.cardType == .Amex)
+        }
+    }
+
+    func testValidVisaCard() {
+        for number in visaNumbers! {
+            let myCard = Card(
+                holderName: "John Doe",
+                expirationMonth: "04",
+                expirationYear: "19",
+                address: address!,
+                number: number,
+                cvv2: "123"
+            )
+            
             do {
                 try myCard.isValid()
             } catch {
-                assertionFailure("Card with number \(myCard.number) is not a vaid card.")
+                assertionFailure("Card with number \(myCard.number) is invalid.")
             }
         }
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
+    func testInvalidVisaCardExpired() {
+        for number in visaNumbers! {
+            let myCard = Card(
+                holderName: "John Doe",
+                expirationMonth: "04",
+                expirationYear: "12",
+                address: address!,
+                number: number,
+                cvv2: "123"
+            )
+            
+            do {
+                try myCard.isValid()
+            } catch {
+                assert(error as! CardValidator.CardValidationError == .InvalidCard)
+            }
+        }
+    }
+    
+    func testValidMasterCardCard() {
+        for number in masterCardNumbers! {
+            let myCard = Card(
+                holderName: "John Doe",
+                expirationMonth: "04",
+                expirationYear: "19",
+                address: address!,
+                number: number,
+                cvv2: "123"
+            )
+            
+            do {
+                try myCard.isValid()
+            } catch {
+                assertionFailure("Card with number \(myCard.number) is invalid.")
+            }
         }
     }
     
