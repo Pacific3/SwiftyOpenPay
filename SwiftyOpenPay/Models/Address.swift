@@ -27,6 +27,16 @@ public struct Address: JSONParselable {
         ]
     }
     
+    public init() {
+        city = ""
+        postalCode = ""
+        countryCode = ""
+        line1 = ""
+        line2 = nil
+        line3 = nil
+        state = ""
+    }
+    
     public init(
         line1: String,
         line2: String? = nil,
