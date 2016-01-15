@@ -79,7 +79,7 @@ public struct Card: JSONParselable {
             "expiration_month": expirationMonth,
             "expiration_year": expirationYear,
             "address": address.backingData(),
-            "number": number,
+            "card_number": number,
             "id": id ?? "",
             "bank_name": bankName ?? "",
             "allows_payouts": allowsPayouts ?? false,
