@@ -1,5 +1,5 @@
 //
-//  SwiftyOpenPaytests.swift
+//  SwiftyOpenPayTests.swift
 //  SwiftyOpenPay
 //
 //  Created by Oscar Swanros on 1/15/16.
