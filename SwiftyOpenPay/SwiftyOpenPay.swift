@@ -12,8 +12,7 @@ private let api_url           = "https://api.openpay.mx/"
 private let sandbox_api_url   = "https://sandbox-api.openpay.mx/"
 private let api_version       = "v1"
 
-extension SwiftyOpenPay.SwiftyOpenPayError: CustomStringConvertible {
-    
+extension SwiftyOpenPay.Error: CustomStringConvertible {
     public var description: String {
         switch self {
         case .MalformedResponse: return "Could not parse server's response."
@@ -22,7 +21,22 @@ extension SwiftyOpenPay.SwiftyOpenPayError: CustomStringConvertible {
 }
 
 public struct SwiftyOpenPay {
-    public enum SwiftyOpenPayError: Int, ErrorConvertible {
+    // MARK: - SwiftyOpenPay supporting data types
+    public struct Configuration {
+        public let merchantId: String
+        public let apiKey: String
+        public let sandboxMode: Bool
+        public let verboseMode: Bool
+        
+        public init(merchantId: String, apiKey: String, sandboxMode: Bool = false, verboseMode: Bool = false) {
+            self.merchantId  = merchantId
+            self.apiKey      = apiKey
+            self.sandboxMode = sandboxMode
+            self.verboseMode = verboseMode
+        }
+    }
+    
+    public enum Error: Int, ErrorConvertible {
         case MalformedResponse = 1
         
         public var code: Int {
@@ -38,26 +52,41 @@ public struct SwiftyOpenPay {
         }
     }
     
+    
+    // MARK: - Private Properties
     private static let internalQueue = OperationQueue()
     
-    public let merchantId: String
-    public let apiKey: String
-    public let productionMode: Bool
-    public let verboseMode: Bool
-    
     private var URLBase: String {
-        let base = productionMode ? api_url : sandbox_api_url
+        let base = sandboxMode ? api_url : sandbox_api_url
         
         return base + api_version + "/" + merchantId + "/"
     }
     
-    public init(merchantId: String, apiKey: String, productionMode: Bool = true, verboseMode: Bool = false) {
-        self.merchantId     = merchantId
-        self.apiKey         = apiKey
-        self.productionMode = productionMode
-        self.verboseMode    = verboseMode
+    
+    // MARK: - Public Properties
+    public let merchantId: String
+    public let apiKey: String
+    public let sandboxMode: Bool
+    public let verboseMode: Bool
+    
+    
+    // MARK: - Public Initializers
+    public init(merchantId: String, apiKey: String, sandboxMode: Bool = false, verboseMode: Bool = false) {
+        self.merchantId  = merchantId
+        self.apiKey      = apiKey
+        self.sandboxMode = sandboxMode
+        self.verboseMode = verboseMode
     }
     
+    public init(configuration: Configuration) {
+        merchantId  = configuration.merchantId
+        apiKey      = configuration.apiKey
+        sandboxMode = configuration.sandboxMode
+        verboseMode = configuration.verboseMode
+    }
+    
+    
+    // MARK: - Public Methods
     public func createTokenWithCard(card: Card, completion: Token -> Void, error: NSError -> Void) throws {
         try card.isValid()
         
@@ -81,6 +110,8 @@ public struct SwiftyOpenPay {
     }
 }
 
+
+// MARK: - Private Methods
 extension SwiftyOpenPay {
     private func requestForURL(url: NSURL, method: HTTPMethod, payload: [String:AnyObject]? = nil) -> NSURLRequest {
         let request = NSMutableURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: 30)
@@ -135,7 +166,7 @@ extension SwiftyOpenPay {
                 let _json = json,
                 let model = type.withData(_json)
                 else {
-                    errorClosure?(NSError(error: ErrorSpecification(ec: SwiftyOpenPayError.MalformedResponse)))
+                    errorClosure?(NSError(error: ErrorSpecification(ec: Error.MalformedResponse)))
                     return
             }
             
