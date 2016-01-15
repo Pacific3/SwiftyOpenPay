@@ -46,10 +46,10 @@ let myCard = Card(
 )
 
 let configuration = SwiftyOpenPay.Configuration(
-  merchantId: "MyMerchantId",
-  apiKey: "MyAPIKey",
-  sandboxMode: true,
-  verboseMode: true
+    merchantId: "MyMerchantId",
+    apiKey: "MyAPIKey",
+    sandboxMode: true,
+    verboseMode: true
 )
 
 let openPay = SwiftyOpenPay(configuration: configuration)
