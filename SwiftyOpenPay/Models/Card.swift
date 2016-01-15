@@ -111,7 +111,7 @@ public struct Card: JSONParselable {
     }
     
     public var cardType: CardType {
-        guard let digits = Int(number.substringToIndex(number.startIndex.successor())) else {
+        guard let digits = Int(number.substringToIndex(number.startIndex.advancedBy(2))) else {
             return .Unknown
         }
         
