@@ -19,6 +19,7 @@
 		DF2B62A01C49627900279269 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF2B629C1C49626D00279269 /* RealmSwift.framework */; };
 		DF2B62A11C49627C00279269 /* Realm.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF2B629B1C49626D00279269 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DF2B62A21C49627C00279269 /* RealmSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF2B629C1C49626D00279269 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DF2B62A41C4962B800279269 /* CardTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2B62A31C4962B800279269 /* CardTest.swift */; };
 		DF31AB291C45BEDF00025798 /* SwiftyOpenPay.h in Headers */ = {isa = PBXBuildFile; fileRef = DF31AB281C45BEDF00025798 /* SwiftyOpenPay.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF31AB301C45BEDF00025798 /* SwiftyOpenPay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF31AB251C45BEDF00025798 /* SwiftyOpenPay.framework */; };
 		DF31AB351C45BEDF00025798 /* SwiftyOpenPayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31AB341C45BEDF00025798 /* SwiftyOpenPayTests.swift */; };
@@ -62,6 +63,7 @@
 /* Begin PBXFileReference section */
 		DF2B629B1C49626D00279269 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		DF2B629C1C49626D00279269 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		DF2B62A31C4962B800279269 /* CardTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTest.swift; sourceTree = "<group>"; };
 		DF31AB251C45BEDF00025798 /* SwiftyOpenPay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyOpenPay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF31AB281C45BEDF00025798 /* SwiftyOpenPay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyOpenPay.h; sourceTree = "<group>"; };
 		DF31AB2A1C45BEDF00025798 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				DF31AB341C45BEDF00025798 /* SwiftyOpenPayTests.swift */,
+				DF2B62A31C4962B800279269 /* CardTest.swift */,
 				DF31AB361C45BEDF00025798 /* Info.plist */,
 			);
 			path = SwiftyOpenPayTests;
@@ -291,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF31AB351C45BEDF00025798 /* SwiftyOpenPayTests.swift in Sources */,
+				DF2B62A41C4962B800279269 /* CardTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
