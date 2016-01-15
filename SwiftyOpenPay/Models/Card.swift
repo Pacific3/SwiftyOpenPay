@@ -91,21 +91,17 @@ public struct Card: JSONParselable {
     
     public static func withData(data: [String : AnyObject]) -> Card? {
         guard
-            let id              = string(data, key: "id"),
-            let bankName        = string(data, key: "bank_name"),
             let holderName      = string(data, key: "holder_name"),
             let expirationMonth = string(data, key: "expiration_month"),
             let expirationYear  = string(data, key: "expiration_year"),
             let number          = string(data, key: "card_number"),
-            let brand           = string(data, key: "brand"),
-            let allowsPayouts   = bool(data, key: "allows_payouts"),
-            let allowsCharges   = bool(data, key: "allows_charges"),
             let addressData     = data["address"] as? [String:AnyObject]
             else {
                 return nil
         }
         
         guard let address = Address.withData(addressData) else {
+            print("Could not build address")
             return nil
         }
         
@@ -115,12 +111,12 @@ public struct Card: JSONParselable {
             expirationYear: expirationYear,
             address: address,
             number: number,
-            id: id,
-            bankName: bankName,
-            allowsPayouts: allowsPayouts,
-            brand: brand,
+            id: string(data, key: "id"),
+            bankName: string(data, key: "bank_name"),
+            allowsPayouts: bool(data, key: "allows_payouts"),
+            brand: string(data, key: "brand"),
             cvv2: nil,
-            allowsCharges: allowsCharges
+            allowsCharges: bool(data, key: "allows_charges")
         )
     }
     

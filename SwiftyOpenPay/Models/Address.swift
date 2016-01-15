@@ -67,13 +67,10 @@ public struct Address: JSONParselable {
                 return nil
         }
         
-        let line2 = string(data, key: "line2")
-        let line3 = string(data, key: "line3")
-        
         return Address(
             line1: line1,
-            line2: line2,
-            line3: line3,
+            line2: string(data, key: "line2"),
+            line3: string(data, key: "line3"),
             city: city,
             state: state,
             countryCode: countryCode,

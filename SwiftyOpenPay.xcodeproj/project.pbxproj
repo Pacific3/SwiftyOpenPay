@@ -30,6 +30,7 @@
 		DF31AB4D1C46B2DB00025798 /* PFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF31AB4A1C46B2DB00025798 /* PFoundation.framework */; };
 		DF31AB4E1C46B2DB00025798 /* PNetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF31AB4B1C46B2DB00025798 /* PNetworkKit.framework */; };
 		DF31AB4F1C46B2DB00025798 /* PUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF31AB4C1C46B2DB00025798 /* PUIKit.framework */; };
+		DF4A6C031C498AAA00C327D2 /* SwiftyOpenPaytests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4A6C021C498AAA00C327D2 /* SwiftyOpenPaytests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		DF31AB4A1C46B2DB00025798 /* PFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PFoundation.framework; path = Carthage/Build/iOS/PFoundation.framework; sourceTree = "<group>"; };
 		DF31AB4B1C46B2DB00025798 /* PNetworkKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PNetworkKit.framework; path = Carthage/Build/iOS/PNetworkKit.framework; sourceTree = "<group>"; };
 		DF31AB4C1C46B2DB00025798 /* PUIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PUIKit.framework; path = Carthage/Build/iOS/PUIKit.framework; sourceTree = "<group>"; };
+		DF4A6C021C498AAA00C327D2 /* SwiftyOpenPaytests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyOpenPaytests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				DF2B62A31C4962B800279269 /* CardTest.swift */,
+				DF4A6C021C498AAA00C327D2 /* SwiftyOpenPaytests.swift */,
 				DF31AB361C45BEDF00025798 /* Info.plist */,
 			);
 			path = SwiftyOpenPayTests;
@@ -290,6 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF4A6C031C498AAA00C327D2 /* SwiftyOpenPaytests.swift in Sources */,
 				DF2B62A41C4962B800279269 /* CardTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -25,7 +25,7 @@ public struct Token: JSONParselable {
     public static func withData(data: [String : AnyObject]) -> Token? {
         guard
             let id = string(data, key: "id"),
-            let cardData = data["card"] as? [String:AnyObject] else {
+            cardData = data["card"] as? [String:AnyObject] else {
                 return nil
         }
         
