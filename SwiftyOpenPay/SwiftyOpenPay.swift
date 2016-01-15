@@ -83,17 +83,18 @@ public struct SwiftyOpenPay {
 
 extension SwiftyOpenPay {
     private func requestForURL(url: NSURL, method: HTTPMethod, payload: [String:AnyObject]? = nil) -> NSURLRequest {
-        let request = NSMutableURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
+        let request = NSMutableURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: 30)
         
         request.setValue("application/json;revision=1.1", forHTTPHeaderField: "Accept")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("OpenPay-iOS/1.0.0", forHTTPHeaderField: "User-Agent")
         request.HTTPMethod = method.rawValue
         
-        let authStr = "\(apiKey):"
+        let authStr = "\(apiKey):" + ""
         let data = authStr.dataUsingEncoding(NSASCIIStringEncoding)
-        let value = data?.base64EncodedStringWithOptions(.EncodingEndLineWithCarriageReturn)
-        
+        guard let value = data?.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.EncodingEndLineWithCarriageReturn) else {
+            fatalError("Could not generate authentication credentials.")
+        }
         request.setValue("Basic \(value)", forHTTPHeaderField: "Authorization")
         
         if let payload = payload {
