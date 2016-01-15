@@ -83,16 +83,16 @@ extension SwiftyOpenPay {
     private func requestForURL(url: NSURL, method: HTTPMethod, payload: [String:AnyObject]? = nil) -> NSURLRequest {
         let request = NSMutableURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
         
-        request.setValue("application/json;revision=1.1", forKey: "Accept")
+        request.setValue("application/json;revision=1.1", forHTTPHeaderField: "Accept")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("OpenPay-iOS/1.0.0", forKey: "User-Agent")
+        request.setValue("OpenPay-iOS/1.0.0", forHTTPHeaderField: "User-Agent")
         request.HTTPMethod = method.rawValue
         
         let authStr = "\(apiKey):"
         let data = authStr.dataUsingEncoding(NSASCIIStringEncoding)
         let value = data?.base64EncodedStringWithOptions(.EncodingEndLineWithCarriageReturn)
         
-        request.setValue("Basic \(value)", forKey: "Authorization")
+        request.setValue("Basic \(value)", forHTTPHeaderField: "Authorization")
         
         if let payload = payload {
             do {
@@ -108,10 +108,11 @@ extension SwiftyOpenPay {
         let session = NSURLSession(configuration: NSURLSessionConfiguration.ephemeralSessionConfiguration())
         let task = session.dataTaskWithRequest(request) { data, reponse, error in
             guard
-                error != nil,
-                let data = data
+                let data = data where error === nil
                 else {
-                    errorClosure?(error!)
+                    if let error = error {
+                        errorClosure?(error)
+                    }
                     return
             }
             

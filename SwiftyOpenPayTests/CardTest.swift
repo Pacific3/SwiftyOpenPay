@@ -162,4 +162,23 @@ class CardTests: XCTestCase {
         }
     }
     
+    func testInvalidMasterCardCardExpired() {
+        for number in masterCardNumbers! {
+            let myCard = Card(
+                holderName: "John Doe",
+                expirationMonth: "04",
+                expirationYear: "12",
+                address: address!,
+                number: number,
+                cvv2: "123"
+            )
+            
+            do {
+                try myCard.isValid()
+            } catch {
+                assert(error as! CardValidator.CardValidationError == .InvalidCard)
+            }
+        }
+    }
+    
 }

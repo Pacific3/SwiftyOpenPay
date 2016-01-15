@@ -22,7 +22,6 @@
 		DF2B62A41C4962B800279269 /* CardTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2B62A31C4962B800279269 /* CardTest.swift */; };
 		DF31AB291C45BEDF00025798 /* SwiftyOpenPay.h in Headers */ = {isa = PBXBuildFile; fileRef = DF31AB281C45BEDF00025798 /* SwiftyOpenPay.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF31AB301C45BEDF00025798 /* SwiftyOpenPay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF31AB251C45BEDF00025798 /* SwiftyOpenPay.framework */; };
-		DF31AB351C45BEDF00025798 /* SwiftyOpenPayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31AB341C45BEDF00025798 /* SwiftyOpenPayTests.swift */; };
 		DF31AB411C45BF9A00025798 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31AB401C45BF9A00025798 /* Address.swift */; };
 		DF31AB431C45C03A00025798 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31AB421C45C03A00025798 /* Card.swift */; };
 		DF31AB451C45C4B100025798 /* CardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31AB441C45C4B100025798 /* CardValidator.swift */; };
@@ -68,7 +67,6 @@
 		DF31AB281C45BEDF00025798 /* SwiftyOpenPay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyOpenPay.h; sourceTree = "<group>"; };
 		DF31AB2A1C45BEDF00025798 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF31AB2F1C45BEDF00025798 /* SwiftyOpenPayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftyOpenPayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DF31AB341C45BEDF00025798 /* SwiftyOpenPayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyOpenPayTests.swift; sourceTree = "<group>"; };
 		DF31AB361C45BEDF00025798 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF31AB401C45BF9A00025798 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		DF31AB421C45C03A00025798 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
@@ -142,7 +140,6 @@
 		DF31AB331C45BEDF00025798 /* SwiftyOpenPayTests */ = {
 			isa = PBXGroup;
 			children = (
-				DF31AB341C45BEDF00025798 /* SwiftyOpenPayTests.swift */,
 				DF2B62A31C4962B800279269 /* CardTest.swift */,
 				DF31AB361C45BEDF00025798 /* Info.plist */,
 			);
@@ -293,7 +290,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF31AB351C45BEDF00025798 /* SwiftyOpenPayTests.swift in Sources */,
 				DF2B62A41C4962B800279269 /* CardTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
