@@ -32,7 +32,7 @@ class SwiftyOpenPaytests: XCTestCase {
             ]
         ]
         
-        guard let token = buildToken(Token.self, data: response) else {
+        guard let _ = buildToken(Token.self, data: response) else {
             assertionFailure("Could not build token")
             return
         }
@@ -40,5 +40,21 @@ class SwiftyOpenPaytests: XCTestCase {
     
     func buildToken<T: JSONParselable>(type: T.Type, data: [String:AnyObject]) -> T? {
         return T.withData(data)
+    }
+    
+    func testSandboxMode() {
+        let op = SwiftyOpenPay(merchantId: "MyMerchantId", apiKey: "MyAPIKey", sandboxMode: true)
+        
+        let sandboxUrl = SwiftyOpenPay.sandbox_api_url + SwiftyOpenPay.api_version + "/" + op.merchantId + "/"
+        
+        assert(sandboxUrl == op.URLBase)
+    }
+    
+    func testProdMode() {
+        let op = SwiftyOpenPay(merchantId: "MyMerchantId", apiKey: "MyAPIKey")
+        
+        let productionUrl = SwiftyOpenPay.api_url + SwiftyOpenPay.api_version + "/" + op.merchantId + "/"
+        
+        assert(productionUrl == op.URLBase)
     }
 }

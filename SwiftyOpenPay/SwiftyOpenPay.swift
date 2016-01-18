@@ -8,10 +8,6 @@
 
 public let OpenPayErrorDomain = "com.openpay.ios.lib"
 
-private let api_url           = "https://api.openpay.mx/"
-private let sandbox_api_url   = "https://sandbox-api.openpay.mx/"
-private let api_version       = "v1"
-
 extension SwiftyOpenPay.Error: CustomStringConvertible {
     public var description: String {
         switch self {
@@ -21,6 +17,18 @@ extension SwiftyOpenPay.Error: CustomStringConvertible {
 }
 
 public struct SwiftyOpenPay {
+    // MARK: - Internal declarations
+    internal static let api_url           = "https://api.openpay.mx/"
+    internal static let sandbox_api_url   = "https://sandbox-api.openpay.mx/"
+    internal static let api_version       = "v1"
+    
+    internal var URLBase: String {
+        let base = sandboxMode ? SwiftyOpenPay.sandbox_api_url : SwiftyOpenPay.api_url
+        
+        return base + SwiftyOpenPay.api_version + "/" + merchantId + "/"
+    }
+    
+    
     // MARK: - SwiftyOpenPay supporting data types
     public struct Configuration {
         public let merchantId: String
@@ -55,12 +63,6 @@ public struct SwiftyOpenPay {
     
     // MARK: - Private Properties
     private static let internalQueue = OperationQueue()
-    
-    private var URLBase: String {
-        let base = sandboxMode ? api_url : sandbox_api_url
-        
-        return base + api_version + "/" + merchantId + "/"
-    }
     
     
     // MARK: - Public Properties
