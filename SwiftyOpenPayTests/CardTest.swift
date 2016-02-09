@@ -18,11 +18,11 @@ class CardTests: XCTestCase {
     
     override func setUp() {
         address = Address(
-            line1: "Koyotlan 230",
-            city: "Villa de Álvarez",
-            state: "Colima",
-            countryCode: "MX",
-            postalCode: "28979"
+            line1: "1 Infinite Loop",
+            city: "Cupetino",
+            state: "California",
+            countryCode: "us",
+            postalCode: "94105"
         )
         
         visaNumbers = [
