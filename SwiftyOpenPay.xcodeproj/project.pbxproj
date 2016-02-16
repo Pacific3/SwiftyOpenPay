@@ -13,12 +13,6 @@
 		DF2B62981C49624C00279269 /* PFoundation.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF31AB4A1C46B2DB00025798 /* PFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DF2B62991C49624C00279269 /* PNetworkKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF31AB4B1C46B2DB00025798 /* PNetworkKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DF2B629A1C49624C00279269 /* PUIKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF31AB4C1C46B2DB00025798 /* PUIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		DF2B629D1C49626D00279269 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF2B629B1C49626D00279269 /* Realm.framework */; };
-		DF2B629E1C49626D00279269 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF2B629C1C49626D00279269 /* RealmSwift.framework */; };
-		DF2B629F1C49627900279269 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF2B629B1C49626D00279269 /* Realm.framework */; };
-		DF2B62A01C49627900279269 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF2B629C1C49626D00279269 /* RealmSwift.framework */; };
-		DF2B62A11C49627C00279269 /* Realm.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF2B629B1C49626D00279269 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		DF2B62A21C49627C00279269 /* RealmSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF2B629C1C49626D00279269 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DF2B62A41C4962B800279269 /* CardTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2B62A31C4962B800279269 /* CardTest.swift */; };
 		DF31AB291C45BEDF00025798 /* SwiftyOpenPay.h in Headers */ = {isa = PBXBuildFile; fileRef = DF31AB281C45BEDF00025798 /* SwiftyOpenPay.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF31AB301C45BEDF00025798 /* SwiftyOpenPay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF31AB251C45BEDF00025798 /* SwiftyOpenPay.framework */; };
@@ -50,8 +44,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				DF2B62A11C49627C00279269 /* Realm.framework in CopyFiles */,
-				DF2B62A21C49627C00279269 /* RealmSwift.framework in CopyFiles */,
 				DF2B62981C49624C00279269 /* PFoundation.framework in CopyFiles */,
 				DF2B62991C49624C00279269 /* PNetworkKit.framework in CopyFiles */,
 				DF2B629A1C49624C00279269 /* PUIKit.framework in CopyFiles */,
@@ -61,8 +53,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		DF2B629B1C49626D00279269 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
-		DF2B629C1C49626D00279269 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		DF2B62A31C4962B800279269 /* CardTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTest.swift; sourceTree = "<group>"; };
 		DF31AB251C45BEDF00025798 /* SwiftyOpenPay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyOpenPay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF31AB281C45BEDF00025798 /* SwiftyOpenPay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyOpenPay.h; sourceTree = "<group>"; };
@@ -88,8 +78,6 @@
 				DF31AB4D1C46B2DB00025798 /* PFoundation.framework in Frameworks */,
 				DF31AB4E1C46B2DB00025798 /* PNetworkKit.framework in Frameworks */,
 				DF31AB4F1C46B2DB00025798 /* PUIKit.framework in Frameworks */,
-				DF2B629D1C49626D00279269 /* Realm.framework in Frameworks */,
-				DF2B629E1C49626D00279269 /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,8 +89,6 @@
 				DF2B62941C49621900279269 /* PFoundation.framework in Frameworks */,
 				DF2B62961C49621D00279269 /* PUIKit.framework in Frameworks */,
 				DF2B62951C49621B00279269 /* PNetworkKit.framework in Frameworks */,
-				DF2B629F1C49627900279269 /* Realm.framework in Frameworks */,
-				DF2B62A01C49627900279269 /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,8 +149,6 @@
 		DF31AB501C46B2DE00025798 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DF2B629B1C49626D00279269 /* Realm.framework */,
-				DF2B629C1C49626D00279269 /* RealmSwift.framework */,
 				DF31AB4A1C46B2DB00025798 /* PFoundation.framework */,
 				DF31AB4B1C46B2DB00025798 /* PNetworkKit.framework */,
 				DF31AB4C1C46B2DB00025798 /* PUIKit.framework */,
