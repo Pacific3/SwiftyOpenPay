@@ -7,11 +7,11 @@
 //
 
 public struct Card: JSONParselable {
-    public enum CardType {
-        case Unknown
-        case Visa
-        case MasterCard
-        case Amex
+    public enum CardType: String {
+        case Unknown    = "unkown"
+        case Visa       = "visa"
+        case MasterCard = "mastercard"
+        case Amex       = "american express"
     }
     
     public enum SecurityCodeCheckStatus {
