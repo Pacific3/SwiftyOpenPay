@@ -1,2 +1,2 @@
-github "Pacific3/PUIKit" ~> 1.4.9
-github "Pacific3/PNetworkKit" ~> 1.8.3
+github "Pacific3/PUIKit" ~> 1.4
+github "Pacific3/PNetworkKit" ~> 1.9

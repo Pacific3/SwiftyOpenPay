@@ -1,4 +1,3 @@
-github "Pacific3/PFoundation" "v1.2.2"
-github "realm/realm-cocoa" "v0.97.0"
-github "Pacific3/PUIKit" "v1.4.9"
-github "Pacific3/PNetworkKit" "v1.8.3"
+github "Pacific3/PFoundation" "v1.3"
+github "Pacific3/PUIKit" "v1.5"
+github "Pacific3/PNetworkKit" "v1.9"
