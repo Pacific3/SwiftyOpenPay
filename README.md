@@ -1,6 +1,6 @@
 # SwiftyOpenPay
 
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![SwiftyOpenPay v0.2.1](https://img.shields.io/badge/Latest Version-v0.2.1-brightgreen.svg)](https://github.com/Pacific3/SwiftyOpenPay/releases/tag/v0.2.1)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![SwiftyOpenPay v0.2.1](https://img.shields.io/badge/Latest Version-v0.4-brightgreen.svg)](https://github.com/Pacific3/SwiftyOpenPay/releases/tag/v0.4)
 
 **SwiftyOpenPay** is an ***unofficial*** OpenPay API client for iOS written in Swift.
 
@@ -13,7 +13,7 @@ Use at your own risk.
 In your Cartfile, include `SwiftyOpenPay`:
 
 ```
-github "Pacific3/SwiftyOpenPay" ~> 0.2
+github "Pacific3/SwiftyOpenPay" ~> 0.4
 ```
 
 Then, update:
